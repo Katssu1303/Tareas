@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Comandos en terminal </title>
+</head>
+<body>
+    <h1> Comandos en terminal</h1>
+    <h3> Comandos básicos </h3>
+    <table>
+        <tr>
+            <td> Coamndo</td>
+            <td> Función </td>
+        </tr>
+        <tr>
+            <td> clear </td>
+            <td> Limpia la terminal </td>
+        </tr>
+        <tr>
+            <td> history </td>
+            <td> Muestra el historial de comandos usados en la terminal </td>
+        </tr>
+        <tr>
+            <td> man {comando} </td>
+            <td> Muestra el manual del comando especificado </td>
+        </tr>
+        <tr>
+            <td> f </td>
+            <td> Forzar </td>
+        </tr>
+        <tr>
+            <td> alias {nombre='comando'} </td>
+            <td> Abreviar comandos </td>
+        </tr>
+    </table>
+
+    <h3> Navegación de archivos </h3>
+    <table>
+        <tr>
+            <td> Coamndo</td>
+            <td> Función </td>
+        </tr>
+        <tr>
+            <td> pwd </td>
+            <td> Muestra la ruta actual (donde estoy ahorita) </td>
+        </tr>
+        <tr>
+            <td> ls </td>
+            <td> Lista el contenido del directorio actual (archivos y carpetas donde estoy ahorita) </td>
+        </tr>
+        <tr>
+            <td> ls -l </td>
+            <td> Lista completa de los atributos de todos los archivos que tengo en la carpeta donde estoy </td>
+        </tr>
+        <tr>
+            <td> ls -a </td>
+            <td> Muestra los archivos ocultos </td>
+        </tr>
+        <tr>
+            <td> ls -la </td>
+            <td> Lista completa de los archivos, incluyendo los archivos ocultos </td>
+        </tr>
+        <tr>
+            <td> cd {directorio} </td>
+            <td> Cambia al directorio especificado </td>
+        </tr>
+        <tr>
+            <td> cd .. </td>
+            <td> Cambia al directorio anterior </td>
+        </tr>
+        <tr>
+            <td> cd </td>
+            <td> Cambia al directorio </td>
+        </tr>
+    </table>
+
+    <h3> Manipulación de archivos y carpetas </h3>
+    <table>
+        <tr>
+            <td> touch {nombre} </td>
+            <td> Crear un archivo </td>
+        </tr>
+        <tr>
+            <td> mkdir {nombre} </td>
+            <td> Crea una carpeta </td>
+        </tr>
+        <tr>
+            <td> code .</td>
+            <td> Crea un archivo con visual studio code </td>
+        </tr>
+        <tr>
+            <td> rm {archivo}</td>
+            <td> Eliminar un archivo especfico </td>
+        </tr>
+        <tr>
+            <td> rm -r {carpeta} </td>
+            <td> Eliminar una carpeta con todo y su contenido </td>
+        </tr>
+        <tr>
+            <td> rm {1..10}.{tipo} </td>
+            <td> Eliminar todos los archivos del tipo especificado del 1 al 10 </td>
+        </tr>
+        <tr>
+            <td> rm *.{tipo}</td>
+            <td> Eliminar todos los archivos del tipo especificado</td>
+        </tr>
+        <tr>
+            <td> rm num*.{tipo}</td>
+            <td> Eliminar los archivos que empiezan con ese número y terminan con .tipo especificado</td>
+        </tr>
+        <tr>
+            <td> rm num*letra.{tipo}</td>
+            <td> Eliminar los archivos que empiezan con ese número contienen cualquier cosa, luego una letra especificada y terminan con .tipo especificado</td>
+        </tr>
+        <tr>
+            <td> mv {origen destino}</td>
+            <td> Mueve archivos (archivo voy a mover y a donde) </td>
+        </tr>
+        <tr>
+            <td> mv {nombre}</td>
+            <td> Renombra el archivo o carpeta </td>
+        </tr>
+        <tr>
+            <td> cp {origen destino}</td>
+            <td></td>
+        </tr>
+    </table>
+
+    <h3> Comandos de git (básicos) </h3>
+    <table>
+        <tr>
+            <td> git init </td>
+            <td> Inicializar un repositorio Git en la carpeta actual </td>
+        </tr>
+        <tr>
+            <td> git status </td>
+            <td> Mostrar los archivos modificados y el estado del repo </td>
+        </tr>
+        <tr>
+            <td> git add {archivo} </td>
+            <td> Añadir el archivo al área de preparación (staging) </td>
+        </tr>
+        <tr>
+            <td> git add . </td>
+            <td> Añadir todos los archivos modificados al área de preparación (staging) </td>
+        </tr>
+        <tr>
+            <td> git commit -m "comentario" </td>
+            <td> Registra los cambios en el historial del repositorio local </td>
+        </tr>
+        <tr>
+            <td> git log </td>
+            <td> Mostrar el historial de commits </td>
+        </tr>
+        <tr>
+            <td> git diff </td>
+            <td> Mostrar los cambios hechos antes de un commit </td>
+        </tr>
+        <tr>
+            <td> git reset {archivo} </td>
+            <td> Quitar el archivo del área de preparación (staging) </td>
+        </tr>
+        <tr>
+            <td> git clone {SSH/HTTPS} </td>
+            <td> Clonar un repositorio remoto en la computadora </td>
+        </tr>
+        <tr>
+            <td> git restore {archivo} </td>
+            <td> Descartar los cambios en un archivo especifico </td>
+        </tr>
+    </table>
+
+    <h3> Comandos de git (Repositorios remotos) </h3>
+    <table>
+        <tr>
+            <td> git push origin main </td>
+            <td> Envía tus commits al repositorio remoto </td>
+        </tr>
+        <tr>
+            <td> git pull origin main </td>
+            <td> Traer los últimos cambios desde el remoto </td>
+        </tr>
+        <tr>
+            <td> git pull </td>
+            <td> Jala algo del repositorio remoto al local </td>
+        </tr>
+        <tr>
+            <td> git fetch --prune </td>
+            <td> Recuperar ramas eliminadas remotamente </td>
+        </tr>
+        <tr>
+            <td> git stash </td>
+            <td> Descargar cambios (no los aplica) </td>
+        </tr>
+    </table>
+
+    <h3> Comandos de git (Ramas) </h3>
+    <table>
+        <tr>
+            <td> git branch </td>
+            <td> Muestra todas las ramas </td>
+        </tr>
+        <tr>
+            <td> git branch -a </td>
+            <td> Verificar las ramas que tenemos </td>
+        </tr>
+        <tr>
+            <td> git branch -d {rama} </td>
+            <td> Borrar la rama </td>
+        </tr>
+        <tr>
+            <td> git checkout {branch to move to} </td>
+            <td> Regresar a la rama principal o cambiar de rama </td>
+        </tr>
+        <tr>
+            <td> git checkout -b {carpeta}  </td>
+            <td> Cambiar entre ramas existentes, el parámetro -b, el comando crea la rama si no existe y luego cambia a ella </td>
+        </tr>
+        <tr>
+            <td> git switch {rama} </td>
+            <td> Cambiar rama </td>
+        </tr>
+        <tr>
+            <td> git merge {rama} </td>
+            <td> Unir una rama con la rama actual </td>
+        </tr>
+
+    </table>
+
+    <h4>Para más información checar: </h4>
+    <ul>
+        <li> 
+            <a href = "https://github.com/gilecheverria/github_fundamentals/tree/main/Terminal_commands"> Terminal commands </a> 
+        </li>
+        <li> 
+            <a href = "https://github.com/gilecheverria/github_fundamentals/blob/main/Activities/activity_4_clone_remote.md"> Git commands </a> 
+        </li>
+        <li> 
+            <a href = "https://github.com/gilecheverria/github_fundamentals/blob/main/Activities/activity_5_branches.md"> Git branching commands </a> 
+        </li>
+        <li> 
+            <a href = "https://terminalcheatsheet.com/es/guides/navigate-terminal"> Cómo navegar con archivos y carpetas en un terminal </a> 
+        </li>
+        <li> 
+            <a href = "https://www.xataka.com/basics/39-comandos-basicos-para-dar-tus-primeros-pasos-terminal-macos"> Comandos básicos para dar tus primeros pasos en el Terminal de macOS </a> 
+        </li>
+    </ul>
+    
+
+</body>
+</html>
