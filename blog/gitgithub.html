@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git y Github</title>
+</head>
+<body>
+    <header>
+        <h1> Git y github </h1>
+        <p> Dentro de esta pagína se hablará del uso de git y github, son herramienrtas de suma importancia para el desarrollo de software en la actualidad; ya que nos permitentrabajar en equipo, organizar el código y mantener el historial de versiones. </p>
+        <h3> GIT </h3>
+        <p> Es un sistema de control de versiones que nos permite llevar un registro de los cambios en el código fuente a lo largo del tiempo. </p>
+        <h3> GITHUB </h3>
+        <p> Es una plataforma que se basa en el uso de la nube lo que nos permite alojar repositorios Git y colaborar con otras personas mediante diferentes herramientas </p>
+    </header>
+
+    <main>
+        <h3> Flujo de trabajo de git y github </h3>
+        <p> El flujo de trabajo en git y github es bien estructurado, te permite trabajar en paralelo, mantener el control de versiones y los cambios que se realizan en las mismas, además de combinar versiones de diversas personas de forma organizada </p>
+        <ol>
+            <p><strong> Crear el primer repositorio: </strong></p>
+            <p> Dentro de tu cuenta de Github en la parte de Dashboard, se debe seleccionar la pesatña de repositorios, posteriormente en el icono verde "New" para crear un nuevo repositorio. Finalmente agrega todas las configuraciones necesarias. </p>
+            <img src="/Users/katy/Desktop/repo1.jpg" width="500">
+        </ol>
+        <ol>
+            <p><strong> Clonar un repositorio: </strong></p>
+            <p> Cuando ya existe tu repositorio en Github, se debe clonar para que sea local. Se recomienda usar SSH para clonar el repositorio.  Se usa el comando "git clone y se pega el url" </p>
+            <img src="/Users/katy/Desktop/repo2.jpg" width="600">
+        </ol>
+        <ol>
+            <p><strong>  Flujo en ramas </strong></p>
+            <img src="/Users/katy/Desktop/diagrama1.jpg" width="600">
+            <p> Este diagrama ejemplifica cómo se pueden crear ramas para desarrollar nuevas funciones sin afectar el trabajo que se mantiene en la rama principal. Hay 3 partes: </p>
+            <ol>Common base -> Punto en común del que parten todas las ramas.</ol>
+            <ol> Main tip -> Último commit en la rama principal. </ol>
+            <ol> Feature tip -> Último commit en una rama de desarrollo de una nueva funcionalidad.</ol>
+        </ol>
+        <ol>
+            <p><strong>  Crear una rama: </strong></p>
+            <p> La idea de crear una nueva rama es con la finalidad de trabajar en el código sin alterar el principal, ya sea para trabajar en una nueva funcionalidad o corregir errores. Se usa el comando "git checkout -b nombre de la rama". Dentro de esta rama creas o modificas el código (Editas archivos, agregas funcionalidades, corriges errores, etc). </p>
+            <p> Dentro de esta rama se debe seguir el mismo proceso como si trabajaras directamente en el principal, es decir: </p>
+            <ol> Agregar los archivos modificados al staging area con un "git add ." o "git add nombre del archivo". </ol>
+            <ol> Guardar los cambios con un commit con el comando "git commit -m "Descripción"". </ol>
+            <ol> Enviar los cambios al repositorio remoto, usando "git push origin main". </ol>
+        </ol>
+        <ol>
+            <p><strong>  Sincronizar con el repositorio remoto: </strong></p>
+            <p> Antes de subir los cambios, es necesario asegurarnos de estar actualizado con el repositorio remoto, por ello se utiliza el comando "git pull origin main ". </p>
+        </ol>
+        <ol>
+            <p><strong>  Subir la rama al repositorio remoto: </strong></p>
+            <p>Para subir la rama al repositorio remoto se utiliza el comando "git push origin nombre de la rama". </p>
+        </ol>
+        <ol>
+            <p><strong>  Crear un Pull Request: </strong></p>
+            <p> Se compara la rama con la rama main y se solicita que se revisen tus cambios. </p>
+        </ol>
+        <ol>
+            <p><strong>  Combinación de ramas: </strong></p>
+            <p> Despúes de que se ha completado la modificación, la rama feature puede fusionarse (merge) con la rama main. Lo que genera un nuevo commit de merge, que mantiene el historial de ambas ramas y los une. Se usa el comando "git merge nombre de la rama". </p>
+            <img src="/Users/katy/Desktop/diagrama2.jpg" width="600">
+        </ol>
+
+    </main>
+    
+    <nav>
+        <p> Para más comandos checar: </p>
+        <ul>
+            <li>
+                <a href = "comandos.html"> Comandos en terminal </a>
+            </li>
+            <li>
+                <a href = "https://github.com/gilecheverria/github_fundamentals/blob/main/Activities/activity_4_clone_remote.md"> Trabajar con repositorios locales y remotos </a>
+            </li>
+            <li>
+                <a href = "https://github.com/gilecheverria/github_fundamentals/blob/main/Activities/activity_5_branches.md"> Ramificación de Git </a>
+            </li>
+        </ul>
+    </nav>
+    <p> Volver a la página inicial</p>
+    <a href="blog.html">Tarea 1 Blog html</a>
+</body>
+</html>
