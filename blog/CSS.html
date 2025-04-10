@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+</head>
+<body>
+    <header>
+        <h1> CSS </h1>
+        <p> CSS es el acrónimo para Cascading Style Sheets, que como su nombre lo dice le da estilo visual a las hojas en proirización de cascada, usualmente se usa este lenguaje para describir la presentación de documentos escritos en HTML o XML. </p>
+        <p> Dentro del CSS se puede modificar cómo se ve, cómo están dispuestos los elementos, colores, tipografías, márgenes, entre otras cosas. </p>
+    </header>
+    <main>
+        <h3> Terminos de CSS </h3>
+        <p> A continuación: </p>
+        <ol>
+            <p><strong> Selectores: </strong></p>
+            <p> Son instrucciones que dicen a qué elemento HTML se le aplicará un estilo. Si el estilo se repetira para varios selectores se pueden listar con comas para no tener que hacer uno por uno. </p>
+        </ol>
+        <ol>
+            <p><strong> Propiedades y valores: </strong></p>
+            <p> Las propiedades son los estilos que quieres aplicar como el color, tamaño de fuente, height, width y van seguidos de ":". </p>
+            <p> Los valores son lo que decides para esa propiedad, es decir como se va a comportar esa propiedad y debe ser seguido por ";". </p>
+            <p> Este es un ejemplo de como se vería un archivo CSS </p>
+            <pre><code> 
+                article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+                  display: block;
+                }
+
+                body {
+                  line-height: 1;
+                }
+
+                ol, ul {
+                  list-style: none;
+                }
+
+                blockquote, q {
+                  quotes: none;
+                }
+
+                blockquote:before, blockquote:after,q:before, q:after {
+                  content: '';
+                  content: none;
+                }
+
+                table {
+                  border-collapse: collapse;
+                  border-spacing: 0;
+                }
+            </code></pre>
+        </ol>
+        <ol>
+            <p><strong> Conectar HTML con CSS: </strong></p>
+            <p> Después de tener los selectores y estilos, se usas en el HTML para que se apliquen correctamente. </p>
+        </ol>
+    </main>
+</body>
+</html>

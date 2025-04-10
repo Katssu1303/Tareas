@@ -1,0 +1,87 @@
+header{
+    background-color: gray;
+    color: white; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+header p{
+    font-weight: bold;
+}
+
+#navigation{
+    display: flex;
+    flex-direction: row;
+    margin: 2px;
+}
+
+#navigation p {
+    margin-left: 20px;
+}
+
+main{
+    background-color: orange;
+    color: white;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#subscribe{
+    background-color: gray;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#subscribe p{
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#subscribe input[type="text"] {
+    padding: 5px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+#subscribe button, input[type="submit"] {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+}
+
+#boxes{
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box img {
+    width: 100px;
+    height: auto;
+}
+
+footer {
+    background-color: gray;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+}
