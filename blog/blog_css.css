@@ -1,0 +1,70 @@
+*{
+    font-size: 20px;
+    margin: 10px 10px 10px 10px; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-image: url("img/fondo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    /* background-color: #c4edea; */
+}
+
+header{
+    background-color: #e2f6f5;
+    text-align: center;
+    font-size: 21px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px 30px;
+    background-attachment: fixed;
+}
+
+body {
+    background-color: transparent;
+}
+
+nav{
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px 30px;
+    width: fit-content;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 64px;
+    text-align: center;
+
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px 30px;
+    width: fit-content;
+    margin: 40px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+table{
+    border: 6px solid #608784;
+    background-color: #e2f6f5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 40px auto;
+    border-collapse: collapse;
+}
+
+th{
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #608784;
+    border-right: 2px solid #608784;
+}
+
+td{
+    padding: 10px;
+    border-bottom: 1px solid #608784;
+    border-right: 2px solid #608784;
+}

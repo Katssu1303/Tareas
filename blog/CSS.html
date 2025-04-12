@@ -1,60 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS</title>
+  <link href="blog_css.css" rel="stylesheet">
 </head>
+
 <body>
-    <header>
-        <h1> CSS </h1>
-        <p> CSS es el acrónimo para Cascading Style Sheets, que como su nombre lo dice le da estilo visual a las hojas en proirización de cascada, usualmente se usa este lenguaje para describir la presentación de documentos escritos en HTML o XML. </p>
-        <p> Dentro del CSS se puede modificar cómo se ve, cómo están dispuestos los elementos, colores, tipografías, márgenes, entre otras cosas. </p>
-    </header>
-    <main>
-        <h3> Terminos de CSS </h3>
-        <p> A continuación: </p>
-        <ol>
-            <p><strong> Selectores: </strong></p>
-            <p> Son instrucciones que dicen a qué elemento HTML se le aplicará un estilo. Si el estilo se repetira para varios selectores se pueden listar con comas para no tener que hacer uno por uno. </p>
-        </ol>
-        <ol>
-            <p><strong> Propiedades y valores: </strong></p>
-            <p> Las propiedades son los estilos que quieres aplicar como el color, tamaño de fuente, height, width y van seguidos de ":". </p>
-            <p> Los valores son lo que decides para esa propiedad, es decir como se va a comportar esa propiedad y debe ser seguido por ";". </p>
-            <p> Este es un ejemplo de como se vería un archivo CSS </p>
-            <pre><code> 
-                article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-                  display: block;
-                }
+  <h1>CSS</h1>
+  <header>
+    <p>
+      CSS es el acrónimo para <em>Cascading Style Sheets</em>, que como su nombre lo dice le da estilo visual a las
+      hojas en priorización de cascada.
+      Usualmente se usa este lenguaje para describir la presentación de documentos escritos en HTML o XML.
+    </p>
+    <p>
+      Dentro del CSS se puede modificar cómo se ve, cómo están dispuestos los elementos, colores, tipografías, márgenes,
+      entre otras cosas.
+    </p>
+  </header>
 
-                body {
-                  line-height: 1;
-                }
+  <main>
+    <h3>Términos de CSS</h3>
+    <p>A continuación se describen algunos conceptos clave que te ayudarán a comprender cómo funciona CSS::</p>
 
-                ol, ul {
-                  list-style: none;
-                }
+    <ol>
+      <li>
+        <strong>Selectores:</strong>
+        <p>Son instrucciones que dicen a qué elemento HTML se le aplicará un estilo. Si el estilo se repite para varios
+          selectores, se pueden listar con comas. Hay tres tipos:</p>
 
-                blockquote, q {
-                  quotes: none;
-                }
+        <ul>
+          <li>
+            <p><strong>Selector de tipo:</strong> Selecciona todos los elementos de un tipo específico.</p>
 
-                blockquote:before, blockquote:after,q:before, q:after {
-                  content: '';
-                  content: none;
-                }
-
-                table {
-                  border-collapse: collapse;
-                  border-spacing: 0;
-                }
+            <p>Archivo HTML:</p>
+            <pre><code>
+&lt;p&gt;Este es el primer párrafo.&lt;/p&gt;
+&lt;p&gt;Otro párrafo.&lt;/p&gt;
             </code></pre>
-        </ol>
-        <ol>
-            <p><strong> Conectar HTML con CSS: </strong></p>
-            <p> Después de tener los selectores y estilos, se usas en el HTML para que se apliquen correctamente. </p>
-        </ol>
-    </main>
+
+            <p>Archivo CSS:</p>
+            <pre><code>
+p {
+  font-family: Arial, sans-serif;
+  color: blue;
+}
+            </code></pre>
+          </li>
+          <li>
+            <p> <strong>Selector de clase:</strong> Se aplica a los elementos con cierta clase <code>class="..."</code>.
+              Se escribe con un punto <code>.</code> al inicio.</p>
+
+            <p>Archivo HTML:</p>
+            <pre><code>
+&lt;p class="importante"&gt;Este párrafo es muy importante.&lt;/p&gt;
+&lt;p&gt;Este párrafo no tiene clase.&lt;/p&gt;
+            </code></pre>
+
+            <p>Archivo CSS:</p>
+            <pre><code>
+.importante {
+  color: red;
+  font-weight: bold;
+}
+            </code></pre>
+          </li>
+
+          <li>
+            <p><strong>Selector de ID:</strong> Se aplica a un solo elemento con un atributo <code>id="..."</code>. Se
+              escribe con <code>#</code> al inicio.</p>
+
+            <p>Archivo HTML:</p>
+            <pre><code>
+&lt;h1 id="titulo-principal"&gt;Este es el título&lt;/h1&gt;
+            </code></pre>
+
+            <p>Archivo CSS:</p>
+            <pre><code>
+#titulo-principal {
+  color: darkgreen;
+  text-align: center;
+  text-transform: uppercase;
+}
+            </code></pre>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Propiedades y valores:</strong>
+        <p>Las propiedades son los estilos que quieres aplicar como el color, tamaño de fuente, altura, ancho, etc. Van
+          seguidas de <code>:</code>.</p>
+        <p>Los valores son lo que decides para esa propiedad y deben ir seguidos por <code>;</code>.</p>
+
+        <p>Ejemplo de archivo CSS:</p>
+        <pre><code>
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+        </code></pre>
+      </li>
+
+      <li>
+        <strong>Conectar HTML con CSS:</strong>
+        <p>Para conectar un archivo CSS externo al HTML, se utiliza la etiqueta <code>&lt;link&gt;</code> dentro del
+          <code>&lt;head&gt;</code>.
+        </p>
+
+        <p>Ejemplo:</p>
+        <pre><code>
+&lt;head&gt;
+  &lt;link rel="stylesheet" href="main.css"&gt;
+&lt;/head&gt;
+        </code></pre>
+      </li>
+    </ol>
+    <h3>Clases en CSS</h3>
+    <div class="overflow">
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </p>
+    </div>
+  </main>
+  <nav>
+    <p> Volver a la página inicial</p>
+    <a href="blog.html">Tarea 1 Blog html</a>
+  </nav>
 </body>
+
 </html>

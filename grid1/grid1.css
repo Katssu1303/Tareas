@@ -1,0 +1,22 @@
+body{
+    background-color: darkslategrey;
+    padding: 20px;
+}
+
+div{
+    border: 2px solid white;
+    background-color: darkslategrey;
+    padding: 10px;
+}
+
+#gridContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.gridItem{
+    height: 150px;
+    display: flex;
+}
