@@ -51,7 +51,7 @@ h1 {
     margin: 40px auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
-    /* border-top: #5acfc5 solid 6px; */
+    border-top: #5acfc5 solid 6px;
 }
 
 table{
