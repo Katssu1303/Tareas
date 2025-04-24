@@ -1,0 +1,25 @@
+body {
+    background-color: rgba(115, 221, 244, 0.362);
+}
+
+*{
+    font-size: 20px;
+    margin: 10px 10px 10px 10px; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font: caption;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 64px;
+    text-align: center;
+
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px 30px;
+    width: fit-content;
+    margin: 40px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    border-top: #5acfc5 solid 6px;
+}
