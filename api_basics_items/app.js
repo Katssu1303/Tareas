@@ -17,6 +17,7 @@ app.use(express.json())
 
 app.use(express.static('./public'))
 
+//Endpoint - cargar pagina
 app.get('/', (req, res)=>{
     fs.readFile('./public/html/hello_server.html', 'utf8', 
     (err, html) =>{
