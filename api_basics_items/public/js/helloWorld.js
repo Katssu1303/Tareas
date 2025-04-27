@@ -1,5 +1,6 @@
 async function getItemById(){
     const URL = 'http://localhost:7500/items';
+    const response = await fetch(URL);
 
     if (response.status === 200) {
         const data = await response.json();
