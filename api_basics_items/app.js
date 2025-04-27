@@ -1,3 +1,5 @@
+//Archivo - servidor que va a manejar todas las rutas (API endpoints)
+
 "use strict";
 
 import express from "express";
@@ -6,6 +8,10 @@ import fs from 'fs'
 const port = 7600;
 
 const app = express()
+
+//Guardar items y usuarios
+const items = [];
+const users = []; 
 
 app.use(express.json())
 
