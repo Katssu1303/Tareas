@@ -11,5 +11,5 @@ async function getItemById(){
     }
 }
 
-fetchItemById(1);
-fetchItemById(6);
+getItemById(1);
+getItemById(6);
