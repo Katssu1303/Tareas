@@ -37,6 +37,7 @@ app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
 
+<<<<<<< HEAD
 //End point - create items
 app.post('/items', (req, res)=>{
     const newItems = req.body;
@@ -192,3 +193,27 @@ app.get('/users', (req, res) =>{
     });
 });
 
+//Endpoint - get user por su id
+app.get('/users/:id', (req, res) => {
+    const {id} = req.params;
+
+    const user = users.find(usr => usr.id === id);
+
+    if (!user) {
+        return res.status(404).json({
+            message: `User with the ID: '${id}' wasnt found`
+        });
+    }
+
+    const catalog = user.items.map(idItem => items.find(item => item.id === idItem));
+
+    res.status(200).json({
+        message: "User found",
+        user: {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            items: catalog
+        }
+    });
+});
