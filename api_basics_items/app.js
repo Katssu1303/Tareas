@@ -37,6 +37,7 @@ app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
 
+<<<<<<< HEAD
 //End point - create items
 app.post('/items', (req, res)=>{
     const newItems = req.body;
@@ -112,5 +113,25 @@ app.get('/items/:id', (req, res) =>{
     res.status(200).json({
         message: "Item found",
         item: itemFound
+    });
+});
+
+//Endpoint - delete item by id
+app.delete('/items/:id', (req, res) =>{
+    const {id} = req.params;
+
+    const index = items.findIndex(item => item.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({
+            message: `The item with the ID: '${id}' was not found so it cant be deleted`
+        });
+    }
+
+    const deleteItem = items.splice(index, 1)[0];
+
+    res.status(200).json({
+        message: `The item with the ID: '${id}' was deleted successfully`,
+        item: deleteItem
     });
 });
