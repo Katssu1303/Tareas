@@ -4,3 +4,12 @@ node_modules/
 package-lock.json
 # MAC 
 .DS_Store
+
+#carpetas que no hay que subir
+.blog/
+.PW/
+.grids/
+
+#archivos que no hay que subir
+README.md
+index.html

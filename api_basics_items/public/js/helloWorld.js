@@ -202,50 +202,84 @@ async function deleteUserById(id) {
     }
 }
 
-createItems()
-getItems();
-getItemById(1);
-getItemById(6);
-deleteItemById(1);
-deleteItemById(6);
-updateItemById(2, { name: "New Shield :)", effect: "Blocks and reflects attacks" });
-updateItemById(6, { name: "Sword" });
-//Valid user
-createUsers([
-    {
-        id: 1,
-        name: "Katia",
-        email: "katy@gmail.com",
-        items: [1, 2]
+async function updateUserById(id, updates){
+    const URL = `http://localhost:7500/users/${id}`;
+
+    const response = await fetch(URL, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(updates)
+    });
+
+    if (response.status === 200) {
+        const data = await response.json();
+        console.log('The user was updated succesfully:');
+        console.log('Changes:', data.changesDone);
+        console.log('User updated:', data.updateUser);
+    } else if (response.status === 404) {
+        const error = await response.json();
+        console.log('The user was not found:');
+        console.log(error.message);
+    } else if (response.status === 400) {
+        const error = await response.json();
+        console.log('Error with the data:');
+        console.log(error.message);
     }
-]);
+}
+
+// createItems()
+// getItems();
+// getItemById(1);
+// getItemById(6);
+// deleteItemById(1);
+// deleteItemById(6);
+// updateItemById(2, { name: "New Shield :)", effect: "Blocks and reflects attacks" });
+// updateItemById(6, { name: "Sword" });
+// //Valid user
+// createUsers([
+//     {
+//         id: 1,
+//         name: "Katia",
+//         email: "katy@gmail.com",
+//         items: [1, 2]
+//     }
+// ]);
 
 
-createUsers([
-    {
-        id: 2,
-        name: "Luka",
-        email: "Luka@gmail.com",
-        items: [1] //Exist
-    },
-    {
-        id: 3,
-        name: "Mario",
-        email: "mario@gmail.com",
-        items: [6] //Doesnt exist
-    }
-]);
+// createUsers([
+//     {
+//         id: 2,
+//         name: "Luka",
+//         email: "Luka@gmail.com",
+//         items: [1] //Exist
+//     },
+//     {
+//         id: 3,
+//         name: "Mario",
+//         email: "mario@gmail.com",
+//         items: [6] //Doesnt exist
+//     }
+// ]);
 
-//Missing email
-createUsers([
-    {
-        id: 4,
-        name: "Dey",
-        items: [1]
-    }
-]);
-getUsers();
-getUserByID(1);
-getUserByID(5)
-deleteUserById(1); 
-deleteUserById(5);
+// //Missing email
+// createUsers([
+//     {
+//         id: 4,
+//         name: "Dey",
+//         items: [1]
+//     }
+// ]);
+// getUsers();
+// getUserByID(1);
+// getUserByID(5)
+// deleteUserById(1); 
+// deleteUserById(5);
+// updateUserById(2, {
+//     name: "Alice", email: "alice@gmail.com"
+// });
+// updateUserById(2, {
+//     items: [1, 2]
+// });
+// updateUserById(3, {
+//     items: [11, 8] //IDs doesnt exist
+// });

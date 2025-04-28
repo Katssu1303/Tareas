@@ -37,7 +37,6 @@ app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
 
-<<<<<<< HEAD
 //End point - create items
 app.post('/items', (req, res)=>{
     const newItems = req.body;
@@ -100,7 +99,7 @@ app.get('/items', (req, res) =>{
 
 //Endpoint - get item by id
 app.get('/items/:id', (req, res) =>{
-    const {id} = req.params;
+    const id = parseInt(req.params.id);
 
     const itemFound = items.find(item => item.id === id);
 
@@ -118,7 +117,7 @@ app.get('/items/:id', (req, res) =>{
 
 //Endpoint - delete item by id
 app.delete('/items/:id', (req, res) =>{
-    const {id} = req.params;
+    const id = parseInt(req.params.id);
 
     const index = items.findIndex(item => item.id === id);
 
@@ -138,7 +137,7 @@ app.delete('/items/:id', (req, res) =>{
 
 //Endpoint - update item
 app.patch('/items/:id', (req, res)=> {
-    const {id} = req.params;
+    const id = parseInt(req.params.id);
     const updates = req.body;
 
     const item = items.find(item => item.id === id);
@@ -166,78 +165,6 @@ app.patch('/items/:id', (req, res)=> {
     });
 });
 
-//Endpoint - get user
-app.get('/users', (req, res) =>{
-    if (users.length === 0) {
-        return res.status(404).json({
-            message: "There arent any users"
-        });
-    }
-
-    const userItems = users.map(user =>{
-        const catalog = user.items.map(idItem => 
-            items.find(item => item.id === idItem)
-        );
-
-        return {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            items: catalog
-        };
-    });
-
-    res.status(200).json({
-        message: "Users found",
-        users: userItems
-    });
-});
-
-//Endpoint - get user por su id
-app.get('/users/:id', (req, res) => {
-    const {id} = req.params;
-
-    const user = users.find(usr => usr.id === id);
-
-    if (!user) {
-        return res.status(404).json({
-            message: `User with the ID: '${id}' wasnt found`
-        });
-    }
-
-    const catalog = user.items.map(idItem => items.find(item => item.id === idItem));
-
-    res.status(200).json({
-        message: "User found",
-        user: {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            items: catalog
-        }
-    });
-});
-
-//Endpoint - borrar user por id
-app.delete('/users/:id', (req, res) =>{
-    const {id} = req.params;
-
-    const index = users.findIndex(usr => usr.id === id);
-
-    if (index === -1) {
-        return res.status(404).json({
-            message: `User with the ID: '${id}' was not found`
-        });
-    }
-
-    const deletedUser = users.splice(index, 1)[0];
-
-    res.status(200).json({
-        message: `User with the ID: '${id}'was deleted succesfully`,
-        user: deletedUser
-    });
-
-=======
 //Endpoint - registrar usuarios
 app.post('/users', (req, res) =>{
     const newUser = req.body;
@@ -294,5 +221,118 @@ app.post('/users', (req, res) =>{
             added: addedUsers
         });
     }
->>>>>>> create_users
+});
+
+//Endpoint - get user
+app.get('/users', (req, res) =>{
+    if (users.length === 0) {
+        return res.status(404).json({
+            message: "There arent any users"
+        });
+    }
+
+    const userItems = users.map(user =>{
+        const catalog = user.items.map(idItem => 
+            items.find(item => item.id === idItem)
+        );
+
+        return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            items: catalog
+        };
+    });
+
+    res.status(200).json({
+        message: "Users found",
+        users: userItems
+    });
+});
+
+//Endpoint - get user por su id
+app.get('/users/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+
+    const user = users.find(usr => usr.id === id);
+
+    if (!user) {
+        return res.status(404).json({
+            message: `User with the ID: '${id}' wasnt found`
+        });
+    }
+
+    const catalog = user.items.map(idItem => items.find(item => item.id === idItem));
+
+    res.status(200).json({
+        message: "User found",
+        user: {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            items: catalog
+        }
+    });
+});
+
+//Endpoint - borrar user por id
+app.delete('/users/:id', (req, res) =>{
+    const id = parseInt(req.params.id);
+
+    const index = users.findIndex(usr => usr.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({
+            message: `User with the ID: '${id}' was not found`
+        });
+    }
+
+    const deletedUser = users.splice(index, 1)[0];
+
+    res.status(200).json({
+        message: `User with the ID: '${id}' was deleted succesfully`,
+        user: deletedUser
+    });
+
+});
+
+//Endpoint - actualizar ususario por id
+app.patch('/users/:id', (req, res) =>{
+    const id = parseInt(req.params.id);
+    const updates = req.body;
+
+    const user = users.find(usr => usr.id === id);
+
+    if (!user) {
+        return res.status(404).json({
+            message: `The user with the ID: '${id}' was not found`
+        });
+    }
+
+    const attributes = ['name', 'email', 'items'];
+    let changes = {};
+
+    attributes.forEach(row => {
+        if (updates[row]) {
+            if (row === 'items') {
+
+                const itemsExist = updates.items.every(idItem =>
+                    items.find(item => item.id === idItem)
+                );
+                if (!itemsExist) {
+                    return res.status(400).json({
+                        message: "One or more item IDs provided do not exist in the catalog"
+                    });
+                }
+            }
+            user[row] = updates[row];
+            changes[row] = updates[row];
+        }
+    });
+
+    res.status(200).json({
+        message: `The user with the ID: '${id}' was updated succesfully`,
+        changesDone: changes,
+        updateUser: user
+    });
 });
