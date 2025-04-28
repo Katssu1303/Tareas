@@ -1,4 +1,4 @@
-async function getItemById(){
+async function getItemById(id){
     const URL = 'http://localhost:7500/items';
     const response = await fetch(URL);
 
