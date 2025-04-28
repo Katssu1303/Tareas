@@ -97,3 +97,20 @@ app.get('/items', (req, res) =>{
     });
 });
 
+//Endpoint - get item by id
+app.get('/items/:id', (req, res) =>{
+    const {id} = req.params;
+
+    const itemFound = items.find(item => item.id === id);
+
+    if(!itemFound){
+        return res.status(404).json({
+            message: `Item with ID: ${id} wasn't found`
+        });
+    }
+
+    res.status(200).json({
+        message: "Item found",
+        item: itemFound
+    });
+});
