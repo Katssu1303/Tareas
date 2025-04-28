@@ -36,3 +36,24 @@ app.get('/', (req, res)=>{
 app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
+
+//Endpoint - borrar user por id
+app.delete('/users/:id', (req, res) =>{
+    const {id} = req.params;
+
+    const index = users.findIndex(usr => usr.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({
+            message: `User with the ID: '${id}' was not found`
+        });
+    }
+
+    const deletedUser = users.splice(index, 1)[0];
+
+    res.status(200).json({
+        message: `User with the ID: '${id}'was deleted succesfully`,
+        user: deletedUser
+    });
+
+});
