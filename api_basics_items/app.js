@@ -83,3 +83,17 @@ app.post('/items', (req, res)=>{
     }
 });
 
+//Endpoint - get all items
+app.get('/items', (req, res) =>{
+    if(items.length === 0){
+        return res.status(404).json({
+            message: "Theres no items"
+        });
+    }
+
+    res.status(200).json({
+        message: "Items found",
+        items: items
+    });
+});
+
