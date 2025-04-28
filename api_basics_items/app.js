@@ -37,7 +37,6 @@ app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
 
-<<<<<<< HEAD
 //End point - create items
 app.post('/items', (req, res)=>{
     const newItems = req.body;
@@ -135,3 +134,34 @@ app.delete('/items/:id', (req, res) =>{
         item: deleteItem
     });
 });
+
+//Endpoint - update item
+app.patch('/items/:id', (req, res)=> {
+    const {id} = req.params;
+    const updates = req.body;
+
+    const item = items.find(item => item.id === id);
+
+    if (!item) {
+        return res.status(404).json({
+            message: `The item with the ID: '${id}'  was not found`
+        });
+    }
+
+    const allowedData = ['name', 'type', 'effect'];
+    let changes = {};
+
+    allowedData.forEach(row =>{
+        if(updates[row]){
+            item[row] = updates[row];
+            changes[row] = updates[row];
+        }
+    });
+
+    res.status(200).json({
+        message: `The item with the ID: '${id}' was updated succesfully`,
+        change: changes,
+        updatedItem: item
+    });
+});
+
