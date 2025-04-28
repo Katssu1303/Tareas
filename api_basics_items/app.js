@@ -36,3 +36,50 @@ app.get('/', (req, res)=>{
 app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
+
+//End point - create items
+app.post('/items', (req, res)=>{
+    const newItems = req.body;
+    //Convertirlo en array
+    const itemsList = Array.isArray(newItems) ? newItems : [newItems];
+
+    const addedItems = [];
+    const failedItems = [];
+
+    itemsList.forEach(item =>{
+
+        const { id, name, type, effect } = item;
+        if(!id || !name || !type || !effect){
+            failedItems.push({item, cause: "Lack of attributes"});
+            return;
+        }
+
+        const exist = items.find(existingItem => existingItem.id === id);
+        if(exist){
+            failedItems.push({item, cause: "Item with the same ID already exists"});
+            return;
+        }
+
+        items.push(item);
+        addedItems.push(item);
+    });
+
+    if(addedItems.length === 0){
+        res.status(400).json({
+            message: "No items could be added", 
+            fails: failedItems
+        });
+    }else if(failedItems.length > 0){
+        res.status(207).json({
+            message: "Some items were added but others failled",
+            added: addedItems,
+            fails: failedItems
+        });
+    }else{
+        res.status(201).json({
+            message: "All items were added",
+            added: addedItems
+        });
+    }
+});
+
