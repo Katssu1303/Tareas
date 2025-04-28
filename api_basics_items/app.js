@@ -37,7 +37,6 @@ app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
 
-<<<<<<< HEAD
 //End point - create items
 app.post('/items', (req, res)=>{
     const newItems = req.body;
