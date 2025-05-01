@@ -73,6 +73,22 @@ async function getItemById(id){
     }
 }
 
+async function deleteItemById(id){
+    const URL = `http://localhost:7500/items/${id}`;
+
+    const response = await fetch(URL, {
+        method: 'DELETE'
+    });
+
+    if (response.status === 200) {
+        const data = await response.json();
+        console.log(data.item);
+    } else if (response.status === 404) {
+        const error = await response.json();
+        console.log(error.message);
+    } 
+}
+
 async function updateItemById(id, updates){
     const URL = `http://localhost:7500/items/${id}`;
 
@@ -92,22 +108,6 @@ async function updateItemById(id, updates){
         console.log('The item to update not found:');
         console.log(error.message);
     }
-} 
-
-async function deleteItemById(id){
-    const URL = `http://localhost:7500/items/${id}`;
-
-    const response = await fetch(URL, {
-        method: 'DELETE'
-    });
-
-    if (response.status === 200) {
-        const data = await response.json();
-        console.log(data.item);
-    } else if (response.status === 404) {
-        const error = await response.json();
-        console.log(error.message);
-    } 
 }
 
 async function createUsers(usersData) {
@@ -182,4 +182,24 @@ async function getUserByID(id){
         console.log(data.message);
     }
 
+}
+
+async function deleteUserById(id) {
+    const URL = `http://localhost:7500/users/${id}`;
+
+    const response = await fetch(URL, {
+        method: 'DELETE'
+    });
+
+    if (response.status === 200) {
+        const data = await response.json();
+        console.log('User was deleted succesfully:');
+        console.log(`ID: ${data.user.id}`);
+        console.log(`Name: ${data.user.name}`);
+        console.log(`Email: ${data.user.email}`);
+    } else if (response.status === 404) {
+        const data = await response.json();
+        console.log('User was not found:');
+        console.log(data.message);
+    }
 }
