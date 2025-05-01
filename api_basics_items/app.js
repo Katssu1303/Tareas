@@ -3,11 +3,14 @@
 "use strict";
 
 import express from "express";
-import fs from 'fs'
+import fs from 'fs';
+import cors from 'cors';
 
 const port = 7600;
 
-const app = express()
+const app = express();
+
+app.use(cors());
 
 //Guardar items y usuarios
 const items = [];

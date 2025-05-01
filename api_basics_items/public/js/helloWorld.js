@@ -1,5 +1,6 @@
 async function createItems(){
-    const URL = 'http://localhost:7500/items';
+    // console.log("Entre");
+    const URL = 'http://localhost:7600/items';
 
     //Items validos
     const data1 = [
@@ -47,7 +48,7 @@ async function createItems(){
 }
 
 async function getItems(){
-    const URL = 'http://localhost:7500/items';
+    const URL = 'http://localhost:7600/items';
 
     const response = await fetch(URL);
 
@@ -61,7 +62,7 @@ async function getItems(){
 }
 
 async function getItemById(id){
-    const URL = `http://localhost:7500/items/${id}`;
+    const URL = `http://localhost:7600/items/${id}`;
     const response = await fetch(URL);
 
     if (response.status === 200) {
@@ -74,7 +75,7 @@ async function getItemById(id){
 }
 
 async function deleteItemById(id){
-    const URL = `http://localhost:7500/items/${id}`;
+    const URL = `http://localhost:7600/items/${id}`;
 
     const response = await fetch(URL, {
         method: 'DELETE'
@@ -90,7 +91,7 @@ async function deleteItemById(id){
 }
 
 async function updateItemById(id, updates){
-    const URL = `http://localhost:7500/items/${id}`;
+    const URL = `http://localhost:7600/items/${id}`;
 
     const response = await fetch(URL, {
         method: 'PATCH',
@@ -111,7 +112,7 @@ async function updateItemById(id, updates){
 }
 
 async function createUsers(usersData) {
-    const URL = 'http://localhost:7500/users'; 
+    const URL = 'http://localhost:7600/users'; 
 
     const response = await fetch(URL, {
         method: 'POST',
@@ -128,7 +129,7 @@ async function createUsers(usersData) {
         console.log('Some users were added, but others failed:');
         console.log('Added:', data.added);
         console.log('Failed:', data.fails);
-    } else if (response.status === 400) {
+    } else if (response.status === 428) {
         const data = await response.json();
         console.log('Could not add any users:');
         console.log(data.fails);
@@ -136,7 +137,7 @@ async function createUsers(usersData) {
 }
 
 async function getUsers(){
-    const URL = 'http://localhost:7500/users';
+    const URL = 'http://localhost:7600/users';
 
     const response = await fetch(URL);
 
@@ -161,7 +162,7 @@ async function getUsers(){
 }
 
 async function getUserByID(id){
-    const URL = `http://localhost:7500/users/${id}`;
+    const URL = `http://localhost:7600/users/${id}`;
 
     const response = await fetch(URL);
 
@@ -185,7 +186,7 @@ async function getUserByID(id){
 }
 
 async function deleteUserById(id) {
-    const URL = `http://localhost:7500/users/${id}`;
+    const URL = `http://localhost:7600/users/${id}`;
 
     const response = await fetch(URL, {
         method: 'DELETE'
@@ -205,7 +206,7 @@ async function deleteUserById(id) {
 }
 
 async function updateUserById(id, updates){
-    const URL = `http://localhost:7500/users/${id}`;
+    const URL = `http://localhost:7600/users/${id}`;
 
     const response = await fetch(URL, {
         method: 'PATCH',

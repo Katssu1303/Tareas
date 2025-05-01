@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Katssu1303/Tareas/issues"
   },
-  "homepage": "https://github.com/Katssu1303/Tareas#readme"
+  "homepage": "https://github.com/Katssu1303/Tareas#readme",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }
