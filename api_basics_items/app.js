@@ -36,3 +36,21 @@ app.get('/', (req, res)=>{
 app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
+
+//Endpoint - get item by id
+app.get('/items/:id', (req, res) =>{
+    const id = parseInt(req.params.id);
+
+    const itemFound = items.find(item => item.id === id);
+
+    if(!itemFound){
+        return res.status(404).json({
+            message: `Item with ID: ${id} wasn't found`
+        });
+    }
+
+    res.status(200).json({
+        message: "Item found",
+        item: itemFound
+    });
+});
