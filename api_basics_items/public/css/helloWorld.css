@@ -1,0 +1,79 @@
+body {
+    background-color: rgba(115, 221, 244, 0.362);
+}
+
+*{
+    font-size: 20px;
+    margin: 10px 10px 10px 10px; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font: caption;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 64px;
+    text-align: center;
+
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px 30px;
+    width: fit-content;
+    margin: 40px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    border-top: #5acfc5 solid 6px;
+}
+
+table{
+    border: 6px solid #608784;
+    background-color: #e2f6f5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 40px auto;
+    border-collapse: collapse;
+}
+
+th{
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #608784;
+    border-right: 2px solid #608784;
+}
+
+td{
+    padding: 10px;
+    border-bottom: 1px solid #608784;
+    border-right: 2px solid #608784;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+section h2, section h3 {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 0;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 18px;
+    background-color: #5acfc5;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #48b4ab;
+}
