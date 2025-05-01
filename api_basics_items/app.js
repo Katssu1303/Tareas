@@ -295,3 +295,44 @@ app.delete('/users/:id', (req, res) =>{
     });
 
 });
+
+//Endpoint - actualizar ususario por id
+app.patch('/users/:id', (req, res) =>{
+    const id = parseInt(req.params.id);
+    const updates = req.body;
+
+    const user = users.find(usr => usr.id === id);
+
+    if (!user) {
+        return res.status(404).json({
+            message: `The user with the ID: '${id}' was not found`
+        });
+    }
+
+    const attributes = ['name', 'email', 'items'];
+    let changes = {};
+
+    attributes.forEach(row => {
+        if (updates[row]) {
+            if (row === 'items') {
+
+                const itemsExist = updates.items.every(idItem =>
+                    items.find(item => item.id === idItem)
+                );
+                if (!itemsExist) {
+                    return res.status(400).json({
+                        message: "One or more item IDs provided do not exist in the catalog"
+                    });
+                }
+            }
+            user[row] = updates[row];
+            changes[row] = updates[row];
+        }
+    });
+
+    res.status(200).json({
+        message: `The user with the ID: '${id}' was updated succesfully`,
+        changesDone: changes,
+        updateUser: user
+    });
+});
