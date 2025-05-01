@@ -36,6 +36,7 @@ app.get('/', (req, res)=>{
 app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
+
 //End point - create items
 app.post('/items', (req, res)=>{
     const newItems = req.body;
@@ -141,5 +142,25 @@ app.patch('/items/:id', (req, res)=> {
         message: `The item with the ID: '${id}' was updated succesfully`,
         change: changes,
         updatedItem: item
+    });
+});
+
+//Endpoint - delete item by id
+app.delete('/items/:id', (req, res) =>{
+    const id = parseInt(req.params.id);
+
+    const index = items.findIndex(item => item.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({
+            message: `The item with the ID: '${id}' was not found so it cant be deleted`
+        });
+    }
+
+    const deleteItem = items.splice(index, 1)[0];
+
+    res.status(200).json({
+        message: `The item with the ID: '${id}' was deleted successfully`,
+        item: deleteItem
     });
 });
