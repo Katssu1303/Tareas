@@ -11,10 +11,113 @@
     <h1>⋆˙⟡ Hello server ✮⋆˙</h1>
     <p>Instrucciones de uso del API y documentación de los endpoints</p>
     <table>
-        
+        <thead>
+            <tr>
+                <th>Método</th>
+                <th>Endpoint</th>
+                <th>Descripción</th>
+                <th>Respuesta esperada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GET</td>
+                <td>/</td>
+                <td>Carga esta página HTML</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/items</td>
+                <td>Agregar uno o varios items al catálogo</td>
+                <td>{ id, name, type, effect }</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/items</td>
+                <td>Obtener todos los items del catálogo</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/items/:id</td>
+                <td>Obtener un item por su ID</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>PATCH</td>
+                <td>/items/:id</td>
+                <td>Actualizar atributos de un item</td>
+                <td>{ name?, type?, effect? }</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/items/:id</td>
+                <td>Eliminar un item del catálogo</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>POST</td>
+                <td>/users</td>
+                <td>Registrar uno o varios usuarios</td>
+                <td>{ id, name, email, items: [IDs] }</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/users</td>
+                <td>Obtener todos los usuarios con información de items</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>GET</td>
+                <td>/users/:id</td>
+                <td>Obtener un usuario por ID con sus items</td>
+                <td>—</td>
+            </tr>
+            <tr>
+                <td>PATCH</td>
+                <td>/users/:id</td>
+                <td>Actualizar los atributos de un usuario</td>
+                <td>{ name?, email?, items?: [IDs] }</td>
+            </tr>
+            <tr>
+                <td>DELETE</td>
+                <td>/users/:id</td>
+                <td>Eliminar un usuario por su ID</td>
+                <td>—</td>
+            </tr>
+        </tbody>
     </table> 
     <section>
+        <h2>Pruebas programadas</h2>
         
+        <h3>Items</h3>
+        <button onclick="createItems()">Crear items (válidos e inválidos)</button>
+        <button onclick="getItems()">Mostrar todos los items</button>
+        <button onclick="getItemById(1)">Buscar item con ID 1</button>
+        <button onclick="getItemById(6)">Buscar item con ID 6 (no existe)</button>
+        <button onclick="deleteItemById(1)">Eliminar item con ID 1</button>
+        <button onclick="deleteItemById(6)">Eliminar item con ID 6 (no existe)</button>
+        <button onclick="updateItemById(2, { name: New Shield :)', effect: 'Blocks and reflects attacks' })">Actualizar item ID 2</button>
+        <button onclick="updateItemById(6, { name: 'Sword' })">Actualizar item ID 6 (no existe)</button>
+    
+        <h3>Usuarios</h3>
+        <button onclick="createUsers([{ id: 1, name: 'Katia', email: 'katy@gmail.com', items: [1, 2] }])">Crear usuario Katia (válido)</button>
+        <button onclick="createUsers([
+            { id: 2, name: 'Luka', email: 'Luka@gmail.com', items: [1] },
+            { id: 3, name: 'Mario', email: 'mario@gmail.com', items: [6] }
+        ])">Crear usuarios Luka (válido) y Mario (item inválido)</button>
+        <button onclick="createUsers([{ id: 4, name: 'Dey', items: [1] }])">Crear usuario Dey (faltan atributos)</button>
+    
+        <button onclick="getUsers()">Obtener todos los usuarios</button>
+        <button onclick="getUserByID(1)">Buscar usuario con ID 1</button>
+        <button onclick="getUserByID(5)">Buscar usuario con ID 5 (no existe)</button>
+        <button onclick="deleteUserById(1)">Eliminar usuario con ID 1</button>
+        <button onclick="deleteUserById(5)">Eliminar usuario con ID 5 (no existe)</button>
+    
+        <button onclick="updateUserById(2, { name: 'Alice', email: 'alice@gmail.com' })">Actualizar usuario 2: nombre y email</button>
+        <button onclick="updateUserById(2, { items: [1, 2] })">Actualizar usuario 2: items válidos</button>
+        <button onclick="updateUserById(3, { items: [11, 8] })">Actualizar usuario 3: items no válidos</button>
     </section>
     
 </body>
