@@ -36,3 +36,30 @@ app.get('/', (req, res)=>{
 app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
+
+//Endpoint - get user
+app.get('/users', (req, res) =>{
+    if (users.length === 0) {
+        return res.status(404).json({
+            message: "There arent any users"
+        });
+    }
+
+    const userItems = users.map(user =>{
+        const catalog = user.items.map(idItem => 
+            items.find(item => item.id === idItem)
+        );
+
+        return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            items: catalog
+        };
+    });
+
+    res.status(200).json({
+        message: "Users found",
+        users: userItems
+    });
+});
