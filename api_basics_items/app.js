@@ -37,6 +37,7 @@ app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
 
+<<<<<<< HEAD
 //End point - create items
 app.post('/items', (req, res)=>{
     const newItems = req.body;
@@ -88,11 +89,29 @@ app.get('/items', (req, res) =>{
     if(items.length === 0){
         return res.status(404).json({
             message: "Theres no items"
+=======
+//Endpoint - get item by id
+app.get('/items/:id', (req, res) =>{
+    const id = parseInt(req.params.id);
+
+    const itemFound = items.find(item => item.id === id);
+
+    if(!itemFound){
+        return res.status(404).json({
+            message: `Item with ID: ${id} wasn't found`
+>>>>>>> get_item_by_id
         });
     }
 
     res.status(200).json({
+<<<<<<< HEAD
         message: "Items found",
         items: items
     });
 });
+=======
+        message: "Item found",
+        item: itemFound
+    });
+});
+>>>>>>> get_item_by_id
