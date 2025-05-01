@@ -36,8 +36,6 @@ app.get('/', (req, res)=>{
 app.listen(port, ()=>{
     console.log(`App listening on port: ${port}`)
 })
-
-<<<<<<< HEAD
 //End point - create items
 app.post('/items', (req, res)=>{
     const newItems = req.body;
@@ -83,13 +81,21 @@ app.post('/items', (req, res)=>{
         });
     }
 });
-    
+
 //Endpoint - get all items
 app.get('/items', (req, res) =>{
     if(items.length === 0){
         return res.status(404).json({
             message: "Theres no items"
-=======
+        });
+    }
+
+    res.status(200).json({
+        message: "Items found",
+        items: items
+    });
+});
+
 //Endpoint - get item by id
 app.get('/items/:id', (req, res) =>{
     const id = parseInt(req.params.id);
@@ -99,19 +105,41 @@ app.get('/items/:id', (req, res) =>{
     if(!itemFound){
         return res.status(404).json({
             message: `Item with ID: ${id} wasn't found`
->>>>>>> get_item_by_id
         });
     }
 
     res.status(200).json({
-<<<<<<< HEAD
-        message: "Items found",
-        items: items
-    });
-});
-=======
         message: "Item found",
         item: itemFound
     });
 });
->>>>>>> get_item_by_id
+
+//Endpoint - update item
+app.patch('/items/:id', (req, res)=> {
+    const id = parseInt(req.params.id);
+    const updates = req.body;
+
+    const item = items.find(item => item.id === id);
+
+    if (!item) {
+        return res.status(404).json({
+            message: `The item with the ID: '${id}'  was not found`
+        });
+    }
+
+    const allowedData = ['name', 'type', 'effect'];
+    let changes = {};
+
+    allowedData.forEach(row =>{
+        if(updates[row]){
+            item[row] = updates[row];
+            changes[row] = updates[row];
+        }
+    });
+
+    res.status(200).json({
+        message: `The item with the ID: '${id}' was updated succesfully`,
+        change: changes,
+        updatedItem: item
+    });
+});
