@@ -164,3 +164,61 @@ app.delete('/items/:id', (req, res) =>{
         item: deleteItem
     });
 });
+
+//Endpoint - registrar usuarios
+app.post('/users', (req, res) =>{
+    const newUser = req.body;
+
+    const usersList = Array.isArray(newUser) ? newUser : [newUser];
+
+    const addedUsers = [];
+    const failedUsers = [];
+
+    usersList.forEach(user=>{
+        const {id, name, email, items: itemsUser} = user;
+
+        if (!id || !name || !email || !itemsUser){
+            failedUsers.push({user, cause: "Lack of attributes"});
+            return
+        }
+
+        const existUser = users.find(usr => usr.id === id);
+
+        if(existUser){
+            failedUsers.push({user, cause: "User with the same ID already exists"});
+            return
+        }
+
+        //Verifica si todos los IDs en itemsUser existen en items
+        const allItemsExist = itemsUser.every(idItem => items.find(item => item.id === idItem));
+
+        if(!allItemsExist){
+            failedUsers.push({user, cause: "The item isnt on the catalog"});
+            return
+        }
+
+        users.push({
+            id, name, email, items: itemsUser
+        });
+
+        addedUsers.push(user);
+    })
+
+    if (addedUsers.length === 0) {
+        res.status(400).json({
+            message: "Couldnt add any users",
+            fails: failedUsers
+        });
+    } else if (failedUsers.length > 0) {
+        res.status(207).json({ 
+            message: "Some users were added but others failed",
+            added: addedUsers,
+            fails: failedUsers
+        });
+    } else {
+        res.status(201).json({
+            message: "All users were added successfully",
+            added: addedUsers
+        });
+    }
+});
