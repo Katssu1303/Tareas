@@ -42,16 +42,20 @@ app.get("/", (req, res) => {
 
 //Enpoint - pruebas DOM
 app.get("/test", (req, res) => {
-  fs.readFile("./public/html/test.html", "utf8", (err, html) => {
-    if (err) {
-      res.status(500).send(`There was an error: ` + err);
-      return;
-    }
+  fs.readFile(
+    "./public/dom_basics/html/items_users.html",
+    "utf8",
+    (err, html) => {
+      if (err) {
+        res.status(500).send(`There was an error: ` + err);
+        return;
+      }
 
-    console.log("Sending page...");
-    res.send(html);
-    console.log("Page sent!");
-  });
+      console.log("Sending page...");
+      res.send(html);
+      console.log("Page sent!");
+    }
+  );
 });
 
 app.listen(port, () => {

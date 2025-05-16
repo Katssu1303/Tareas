@@ -22,7 +22,7 @@ async function registerItemsButton() {
 async function obtainItemsButton() {
   const idItem = document.getElementById("idSearchItem").value;
   //alert(typeof idItem);
-  itemList.innerHTML = "";
+  //itemList.innerHTML = "";
 
   if (idItem === "") {
     // Obtener todos los items
@@ -36,6 +36,7 @@ async function obtainItemsButton() {
       const data = await response.json();
       data.items.forEach((item) => {
         const li = document.createElement("li");
+        const itemList = document.getElementById("itemList");
         li.textContent = `ID: ${item.id}, Name: ${item.name}, Type: ${item.type}, Effect: ${item.effect}`;
         itemList.appendChild(li);
 
@@ -53,6 +54,7 @@ async function obtainItemsButton() {
       const data = await response.json();
       const item = data.item;
       const li = document.createElement("li");
+      const itemList = document.getElementById("itemList");
       li.textContent = `ID: ${item.id}, Name: ${item.name}, Type: ${item.type}, Effect: ${item.effect}`;
       itemList.appendChild(li);
     } else {
@@ -151,7 +153,7 @@ async function registerUserButton() {
 async function obtainUserButton() {
   const idItem = document.getElementById("idSearchUser").value;
   //alert(typeof idItem);
-  itemList.innerHTML = "";
+  UserList.innerHTML = "";
 
   if (idItem === "") {
     // Obtener todos los items
@@ -166,15 +168,15 @@ async function obtainUserButton() {
       data.items.forEach((item) => {
         const li = document.createElement("li");
         li.textContent = `ID: ${item.id}, Name: ${item.name}, Type: ${item.type}, Effect: ${item.effect}`;
-        itemList.appendChild(li);
+        UserList.appendChild(li);
 
-        alert(itemList);
+        alert(UserList);
       });
     } else {
       const error = await response.json();
       const li = document.createElement("li");
       li.textContent = `${error.message}`;
-      itemList.appendChild(li);
+      UserList.appendChild(li);
     }
   } else {
     const response = await fetch(`http://localhost:7600/items/${idItem}`);
@@ -183,12 +185,12 @@ async function obtainUserButton() {
       const item = data.item;
       const li = document.createElement("li");
       li.textContent = `ID: ${item.id}, Name: ${item.name}, Type: ${item.type}, Effect: ${item.effect}`;
-      itemList.appendChild(li);
+      UserList.appendChild(li);
     } else {
       const error = await response.json();
       const li = document.createElement("li");
       li.textContent = `${error.message}`;
-      itemList.appendChild(li);
+      UserList.appendChild(li);
     }
   }
 }
