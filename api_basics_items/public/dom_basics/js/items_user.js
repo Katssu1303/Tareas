@@ -22,7 +22,8 @@ async function registerItemsButton() {
 async function obtainItemsButton() {
   const idItem = document.getElementById("idSearchItem").value;
   //alert(typeof idItem);
-  //itemList.innerHTML = "";
+  const itemList = document.getElementById("itemList");
+  itemList.innerHTML = "";
 
   if (idItem === "") {
     // Obtener todos los items
@@ -36,11 +37,10 @@ async function obtainItemsButton() {
       const data = await response.json();
       data.items.forEach((item) => {
         const li = document.createElement("li");
-        const itemList = document.getElementById("itemList");
         li.textContent = `ID: ${item.id}, Name: ${item.name}, Type: ${item.type}, Effect: ${item.effect}`;
         itemList.appendChild(li);
 
-        alert(itemList);
+        //alert(itemList);
       });
     } else {
       const error = await response.json();
