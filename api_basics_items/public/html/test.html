@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/helloWorld.js" defer></script>
+    <link href="../css/dom.css" rel="stylesheet" />
+    <title>Hello Server</title>
+  </head>
+  <body>
+    <h1>⋆˙⟡ Hello server ✮⋆˙</h1>
+
+    <section>
+      <h2>Items</h2>
+      <form id="itemForm">
+        <fieldset>
+          <h4>Crear Item</h4>
+          <p>ID:</p>
+          <input id="idItem" type="text" />
+
+          <p>Nombre:</p>
+          <input id="nameItem" type="text" />
+
+          <p>Tipo:</p>
+          <input id="typeItem" type="text" />
+
+          <p>Efecto:</p>
+          <input id="effectItem" type="text" />
+
+          <button
+            id="postItemsButton"
+            onclick="registerItemsButton()"
+            type="button"
+          >
+            Registrar Item
+          </button>
+        </fieldset>
+
+        <fieldset>
+          <h4>Buscar / Eliminar / Actualizar</h4>
+
+          <p>ID del item a buscar:</p>
+          <input id="idSearchItem" type="text" />
+          <button
+            id="getItemsButton"
+            onclick="obtainItemsButton()"
+            type="button"
+          >
+            Obtener Item(s)
+          </button>
+          <ul id="itemList"></ul>
+
+          <p>ID del item a eliminar:</p>
+          <input id="idDeleteItem" type="text" />
+          <button
+            id="deleteItemsButton"
+            onclick="deleteItemButton()"
+            type="button"
+          >
+            Borrar Item
+          </button>
+
+          <p>ID del item a actualizar:</p>
+          <input id="idUpdateItem" type="text" />
+
+          <p>Nuevo nombre (opcional):</p>
+          <input id="newItemName" type="text" />
+
+          <p>Nuevo tipo (opcional):</p>
+          <input id="newItemtype" type="text" />
+
+          <p>Nuevo efecto (opcional):</p>
+          <input id="newItemEffect" type="text" />
+
+          <button
+            id="patchItemsButton"
+            onclick="updateItemButton()"
+            type="button"
+          >
+            Actualizar Item
+          </button>
+        </fieldset>
+      </form>
+      <ul id="itemList"></ul>
+    </section>
+
+    <section>
+      <h2>Users</h2>
+      <form id="userForm">
+        <fieldset>
+          <h4>Crear Usuario</h4>
+          <p>ID:</p>
+          <input id="idUser" type="int" />
+
+          <p>Nombre:</p>
+          <input id="nameUser" type="text" />
+
+          <p>Tipo:</p>
+          <input id="typeUser" type="text" />
+
+          <p>Efecto:</p>
+          <input id="effectUser" type="text" />
+
+          <button
+            id="postUserButton"
+            onclick="registerUserButton()"
+            type="button"
+          >
+            Registrar Usuario
+          </button>
+        </fieldset>
+
+        <fieldset>
+          <h4>Buscar / Eliminar / Actualizar</h4>
+
+          <p>ID del usuario a buscar:</p>
+          <input id="idSearchUser" type="int" />
+          <button id="getUserButton" onclick="obtainUserButton()" type="button">
+            Obtener Usuario(s)
+          </button>
+
+          <p>ID del usuario a eliminar:</p>
+          <input id="idDeleteUser" type="int" />
+          <button
+            id="deleteUserButton"
+            onclick="deleteUserButton()"
+            type="button"
+          >
+            Borrar Usuario
+          </button>
+
+          <p>ID del usuario a actualizar:</p>
+          <input id="idUpdateUser" type="int" />
+
+          <p>Nuevo nombre (opcional):</p>
+          <input id="newUserName" type="text" />
+
+          <p>Nuevo tipo (opcional):</p>
+          <input id="newUsertype" type="text" />
+
+          <p>Nuevo efecto (opcional):</p>
+          <input id="newUserEffect" type="text" />
+
+          <button
+            id="patchUserButton"
+            onclick="updateUserButton()"
+            type="button"
+          >
+            Actualizar Usuario
+          </button>
+        </fieldset>
+      </form>
+      <ul id="UserList"></ul>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: rgba(115, 221, 244, 0.362);
+  color: #333;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+h1 {
+  font: caption;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 64px;
+  text-align: center;
+
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 15px 30px;
+  width: fit-content;
+  margin: 40px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  border-top: #5acfc5 solid 6px;
+}
+
+section {
+  background-color: #fff;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #27bacd;
+  margin-bottom: 1rem;
+}
+
+/* //Formularios en columnas  */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+fieldset {
+  border: 2px solid #608784;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+p {
+  margin-top: 0.8rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #333;
+}
+
+input {
+  padding: 0.6rem;
+  border: 1px solid #608784;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #27bacd;
+  outline: none;
+}
+
+button {
+  background-color: #27bacd;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #27bacd;
+}
+
+ul {
+  margin-top: 1rem;
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  color: #608784;
+}
