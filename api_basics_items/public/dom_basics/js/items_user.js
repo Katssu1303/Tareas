@@ -128,7 +128,10 @@ async function registerUserButton() {
     id: parseInt(document.getElementById("idUser").value),
     name: document.getElementById("nameUser").value,
     email: document.getElementById("emailUser").value,
-    items: document.getElementById("itemsUser").value,
+    items: document
+      .getElementById("itemsUser")
+      .value.split(",")
+      .map((id) => parseInt(id.trim())),
   };
   //alert(JSON.stringify(data));
   const validResponse = await fetch(URL, {
@@ -143,13 +146,12 @@ async function registerUserButton() {
 //Obtener todos los usuarios
 async function obtainUserButton() {
   const idUser = document.getElementById("idSearchUser").value;
-  //alert(typeof idItem);
+  //alert(typeof idUser);
   const usersList = document.getElementById("usersList");
   usersList.innerHTML = "";
 
   if (idUser === "") {
     // Obtener todos los items
-    //const response = await fetch("http://localhost:7600/items");
     const response = await fetch("http://localhost:7600/users", {
       method: "GET",
       cache: "no-store",
@@ -157,9 +159,9 @@ async function obtainUserButton() {
 
     if (response.status === 200) {
       const data = await response.json();
-      data.items.forEach((item) => {
+      data.users.forEach((user) => {
         const li = document.createElement("li");
-        li.textContent = `ID: ${item.id}, Name: ${item.name}, Type: ${item.type}, Effect: ${item.effect}`;
+        li.textContent = `ID: ${user.id}, Name: ${user.name}, Email: ${user.email}, Items: ${user.items}`;
         usersList.appendChild(li);
 
         alert(usersList);
@@ -174,10 +176,10 @@ async function obtainUserButton() {
     const response = await fetch(`http://localhost:7600/users/${idUser}`);
     if (response.status === 200) {
       const data = await response.json();
-      const item = data.item;
+      const user = data.user;
       const li = document.createElement("li");
       const usersList = document.getElementById("usersList");
-      li.textContent = `ID: ${item.id}, Name: ${item.name}, Type: ${item.type}, Effect: ${item.effect}`;
+      li.textContent = `ID: ${user.id}, Name: ${user.name}, Email: ${user.email}, Items: ${user.items}`;
       usersList.appendChild(li);
     } else {
       const error = await response.json();
@@ -214,37 +216,27 @@ async function updateUserButton() {
   const idUser = document.getElementById("idUpdateUser").value;
   const URL = `http://localhost:7600/users/${idUser}`;
 
-  const exist = await fetch(URL);
-  if (exist.status === 404) {
-    const error = await exist.json();
-    alert(`Error: ${error.message}`);
-    return;
-  }
+  const data = {
+    id: parseInt(document.getElementById("idUpdateItem").value),
+    name: document.getElementById("newItemName").value,
+    type: document.getElementById("newItemtype").value,
+    effect: document.getElementById("newItemEffect").value,
+  };
 
-  const name = document.getElementById("newUserName").value;
-  const email = document.getElementById("newUserEmail").value;
-  const items = document.getElementById("newUserItems").value;
-
-  const newData = {};
-  if (name !== "") updates.name = name;
-  if (type !== "") updates.type = type;
-  if (effect !== "") updates.effect = effect;
-
-  //alert(JSON.stringify(newData));
   const response = await fetch(URL, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(newData),
+    body: JSON.stringify(data),
   });
 
   if (response.status === 200) {
     const data = await response.json();
     alert(
       "Item actualizado correctamente:\n" +
-        `ID: ${data.updatedItem.id}\n` +
-        `Nombre: ${data.updatedItem.name}\n` +
-        `Email: ${data.updatedItem.type}\n` +
-        `Items: ${data.updatedItem.effect}`
+        `ID: ${data.updatedUser.id}\n` +
+        `Nombre: ${data.updateUser.name}\n` +
+        `Email: ${data.updateUser.email}\n` +
+        `Items: ${data.updateUser.items}`
     );
   } else {
     const error = await response.json();

@@ -114,16 +114,16 @@
           <h4>Buscar / Eliminar / Actualizar</h4>
 
           <p>ID del usuario a buscar:</p>
-          <input id="idSearchUser" type="int" />
+          <input id="idSearchUser" type="text" />
           <button id="getUserButton" onclick="obtainUserButton()" type="button">
             Obtener Usuario(s)
           </button>
           <ul id="usersList"></ul>
 
           <p>ID del usuario a eliminar:</p>
-          <input id="idDeleteUser" type="int" />
+          <input id="idDeleteUser" type="text" />
           <button
-            id="deleteUserButton"
+            id="deleteUsersButton"
             onclick="deleteUserButton()"
             type="button"
           >
@@ -131,7 +131,7 @@
           </button>
 
           <p>ID del usuario a actualizar:</p>
-          <input id="idUpdateUser" type="int" />
+          <input id="idUpdateUser" type="text" />
 
           <p>Nuevo nombre (opcional):</p>
           <input id="newUserName" type="text" />
@@ -151,7 +151,7 @@
           </button>
         </fieldset>
       </form>
-      <ul id="UserList"></ul>
+      <ul id="usersList"></ul>
     </section>
   </body>
 </html>
