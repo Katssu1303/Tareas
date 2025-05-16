@@ -69,7 +69,7 @@ async function obtainItemsButton() {
 //Borrar item por su ID
 async function deleteItemButton() {
   const idItem = document.getElementById("idDeleteItem").value;
-  const URL = `http://localhost:7600/items/${id}`;
+  const URL = `http://localhost:7600/items/${idItem}`;
 
   if (idItem === "") {
     alert("Ingresa el ID del item a eliminar");
@@ -89,29 +89,20 @@ async function deleteItemButton() {
 
 //Actualizar item por su ID
 async function updateItemButton() {
-  const URL = `http://localhost:7600/items/${id}`;
+  const idItem = document.getElementById("idUpdateItem").value;
+  const URL = `http://localhost:7600/items/${idItem}`;
 
-  const exist = await fetch(URL);
-  if (exist.status === 404) {
-    const error = await exist.json();
-    alert(`Error: ${error.message}`);
-    return;
-  }
+  const data = {
+    id: parseInt(document.getElementById("idUpdateItem").value),
+    name: document.getElementById("newItemName").value,
+    type: document.getElementById("newItemtype").value,
+    effect: document.getElementById("newItemEffect").value,
+  };
 
-  const name = document.getElementById("newItemName").value;
-  const type = document.getElementById("newItemtype").value;
-  const effect = document.getElementById("newItemEffect").value;
-
-  const newData = {};
-  if (name !== "") updates.name = name;
-  if (type !== "") updates.type = type;
-  if (effect !== "") updates.effect = effect;
-
-  //alert(JSON.stringify(newData));
   const response = await fetch(URL, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(newData),
+    body: JSON.stringify(data),
   });
 
   if (response.status === 200) {
