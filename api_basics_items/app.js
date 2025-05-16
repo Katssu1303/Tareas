@@ -119,7 +119,6 @@ app.get("/items", (req, res) => {
 
 //Endpoint - get item by id
 app.get("/items/:id", (req, res) => {
-  print;
   const id = parseInt(req.params.id);
 
   const itemFound = items.find((item) => item.id === id);
