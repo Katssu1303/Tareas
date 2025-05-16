@@ -164,7 +164,7 @@ async function obtainUserButton() {
         li.textContent = `ID: ${user.id}, Name: ${user.name}, Email: ${user.email}, Items: ${user.items}`;
         usersList.appendChild(li);
 
-        alert(usersList);
+        //alert(usersList);
       });
     } else {
       const error = await response.json();
@@ -233,7 +233,7 @@ async function updateUserButton() {
     const data = await response.json();
     alert(
       "Item actualizado correctamente:\n" +
-        `ID: ${data.updatedUser.id}\n` +
+        `ID: ${data.updateUser.id}\n` +
         `Nombre: ${data.updateUser.name}\n` +
         `Email: ${data.updateUser.email}\n` +
         `Items: ${data.updateUser.items}`
