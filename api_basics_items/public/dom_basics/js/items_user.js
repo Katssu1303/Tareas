@@ -122,13 +122,13 @@ async function updateItemButton() {
 
 //Registrar usuario desde input
 async function registerUserButton() {
-  const URL = "http://localhost:7600/items";
+  const URL = "http://localhost:7600/users";
 
   const data = {
-    id: parseInt(document.getElementById("idItem").value),
-    name: document.getElementById("nameItem").value,
-    type: document.getElementById("typeItem").value,
-    effect: document.getElementById("effectItem").value,
+    id: parseInt(document.getElementById("idUser").value),
+    name: document.getElementById("nameUser").value,
+    email: document.getElementById("emailUser").value,
+    items: document.getElementById("itemsUser").value,
   };
   //alert(JSON.stringify(data));
   const validResponse = await fetch(URL, {
@@ -142,14 +142,15 @@ async function registerUserButton() {
 
 //Obtener todos los usuarios
 async function obtainUserButton() {
-  const idItem = document.getElementById("idSearchUser").value;
+  const idUser = document.getElementById("idSearchUser").value;
   //alert(typeof idItem);
-  UserList.innerHTML = "";
+  const usersList = document.getElementById("usersList");
+  usersList.innerHTML = "";
 
-  if (idItem === "") {
+  if (idUser === "") {
     // Obtener todos los items
     //const response = await fetch("http://localhost:7600/items");
-    const response = await fetch("http://localhost:7600/items", {
+    const response = await fetch("http://localhost:7600/users", {
       method: "GET",
       cache: "no-store",
     });
@@ -159,37 +160,38 @@ async function obtainUserButton() {
       data.items.forEach((item) => {
         const li = document.createElement("li");
         li.textContent = `ID: ${item.id}, Name: ${item.name}, Type: ${item.type}, Effect: ${item.effect}`;
-        UserList.appendChild(li);
+        usersList.appendChild(li);
 
-        alert(UserList);
+        alert(usersList);
       });
     } else {
       const error = await response.json();
       const li = document.createElement("li");
       li.textContent = `${error.message}`;
-      UserList.appendChild(li);
+      usersList.appendChild(li);
     }
   } else {
-    const response = await fetch(`http://localhost:7600/items/${idItem}`);
+    const response = await fetch(`http://localhost:7600/users/${idUser}`);
     if (response.status === 200) {
       const data = await response.json();
       const item = data.item;
       const li = document.createElement("li");
+      const usersList = document.getElementById("usersList");
       li.textContent = `ID: ${item.id}, Name: ${item.name}, Type: ${item.type}, Effect: ${item.effect}`;
-      UserList.appendChild(li);
+      usersList.appendChild(li);
     } else {
       const error = await response.json();
       const li = document.createElement("li");
       li.textContent = `${error.message}`;
-      UserList.appendChild(li);
+      usersList.appendChild(li);
     }
   }
 }
 
 //Borrar usuario por su ID
 async function deleteUserButton() {
-  const idUser = document.getElementById("idDeleteItem").value;
-  const URL = `http://localhost:7600/items/${id}`;
+  const idUser = document.getElementById("idDeleteUser").value;
+  const URL = `http://localhost:7600/users/${idUser}`;
 
   if (idUser === "") {
     alert("Ingresa el ID del usuario a eliminar");
@@ -209,7 +211,8 @@ async function deleteUserButton() {
 
 //Actualizar usuario por su ID
 async function updateUserButton() {
-  const URL = `http://localhost:7600/items/${id}`;
+  const idUser = document.getElementById("idUpdateUser").value;
+  const URL = `http://localhost:7600/users/${idUser}`;
 
   const exist = await fetch(URL);
   if (exist.status === 404) {
@@ -219,8 +222,8 @@ async function updateUserButton() {
   }
 
   const name = document.getElementById("newUserName").value;
-  const type = document.getElementById("newUsertype").value;
-  const effect = document.getElementById("newUserEffect").value;
+  const email = document.getElementById("newUserEmail").value;
+  const items = document.getElementById("newUserItems").value;
 
   const newData = {};
   if (name !== "") updates.name = name;
@@ -240,8 +243,8 @@ async function updateUserButton() {
       "Item actualizado correctamente:\n" +
         `ID: ${data.updatedItem.id}\n` +
         `Nombre: ${data.updatedItem.name}\n` +
-        `Tipo: ${data.updatedItem.type}\n` +
-        `Efecto: ${data.updatedItem.effect}`
+        `Email: ${data.updatedItem.type}\n` +
+        `Items: ${data.updatedItem.effect}`
     );
   } else {
     const error = await response.json();

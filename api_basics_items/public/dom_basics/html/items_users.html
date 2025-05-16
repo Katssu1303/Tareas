@@ -90,16 +90,16 @@
         <fieldset>
           <h4>Crear Usuario</h4>
           <p>ID:</p>
-          <input id="idUser" type="int" />
+          <input id="idUser" type="text" />
 
           <p>Nombre:</p>
           <input id="nameUser" type="text" />
 
-          <p>Tipo:</p>
-          <input id="typeUser" type="text" />
+          <p>Email:</p>
+          <input id="emailUser" type="text" />
 
-          <p>Efecto:</p>
-          <input id="effectUser" type="text" />
+          <p>Items:</p>
+          <input id="itemsUser" type="text" />
 
           <button
             id="postUserButton"
@@ -118,6 +118,7 @@
           <button id="getUserButton" onclick="obtainUserButton()" type="button">
             Obtener Usuario(s)
           </button>
+          <ul id="usersList"></ul>
 
           <p>ID del usuario a eliminar:</p>
           <input id="idDeleteUser" type="int" />
@@ -136,10 +137,10 @@
           <input id="newUserName" type="text" />
 
           <p>Nuevo tipo (opcional):</p>
-          <input id="newUsertype" type="text" />
+          <input id="newUserEmail" type="text" />
 
           <p>Nuevo efecto (opcional):</p>
-          <input id="newUserEffect" type="text" />
+          <input id="newUserItems" type="text" />
 
           <button
             id="patchUserButton"
